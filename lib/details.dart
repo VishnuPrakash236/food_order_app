@@ -1,4 +1,6 @@
+import 'package:babylonjs_viewer/babylonjs_viewer.dart';
 import 'package:flutter/material.dart';
+import 'package:food_order_app/model3d.dart';
 import 'package:food_order_app/payment.dart';
 
 class Details extends StatefulWidget {
@@ -23,7 +25,10 @@ class _DetailsState extends State<Details> {
         title: Center(child: Text('Detail')),
         actions: [
           IconButton(
-            icon: Icon( Icons.favorite_outline_rounded,color: Colors.red, ),
+            icon: Icon(
+              Icons.favorite_outline_rounded,
+              color: Colors.red,
+            ),
             onPressed: () {
               // Add favorite logic here
             },
@@ -36,7 +41,13 @@ class _DetailsState extends State<Details> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Image.asset('assets/images/roll_1.png', height: 200),
+              // child: Image.asset('assets/images/roll_1.png', height: 200),
+              child: SizedBox(
+                height: 200,
+                child: BabylonJSViewer(
+                  src: 'assets/images/chinese_tea_exported.glb',
+                ),
+              ),
             ),
             SizedBox(height: 16),
             Row(
@@ -128,6 +139,12 @@ class _DetailsState extends State<Details> {
                     IconButton(
                       icon: Icon(Icons.add),
                       onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Model3d(),
+                          ),
+                        );
                         // Add increase logic here
                       },
                     ),
